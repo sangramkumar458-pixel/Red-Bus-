@@ -1,0 +1,465 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Your Name</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background-color: #f9fbfd;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* header / intro */
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #e9eef2;
+    }
+
+    .photo-placeholder {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #d0dae4, #b8c4d0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2c3e50;
+      font-weight: 500;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+
+    .intro-text h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1f2b36;
+      margin-bottom: 0.25rem;
+    }
+
+    .intro-text .tagline {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: #4e6b82;
+    }
+
+    /* section headings */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.5rem;
+      letter-spacing: -0.01em;
+      color: #1f2b36;
+      border-left: 6px solid #4e9ab3;
+      padding-left: 1rem;
+    }
+
+    /* skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .skills-list li {
+      background: white;
+      border: 1px solid #dae2e9;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1f3a4b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: 0.1s ease;
+    }
+
+    .skills-list li:hover {
+      background: #e3f0f5;
+      border-color: #8eb9ce;
+    }
+
+    /* experience cards */
+    .experience-item {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #eef3f7;
+      transition: 0.2s;
+    }
+
+    .experience-item:hover {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      border-color: #cbdbe6;
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1a2b37;
+    }
+
+    .exp-company {
+      font-weight: 500;
+      color: #346a82;
+      margin-top: 0.2rem;
+    }
+
+    .exp-date {
+      font-size: 0.95rem;
+      color: #6f8a9b;
+      background: #ecf3f8;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+    }
+
+    .exp-desc {
+      margin-top: 1rem;
+      color: #2d4a5e;
+    }
+
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #eef3f7;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+      border-color: #cfdfea;
+    }
+
+    .project-img-placeholder {
+      height: 180px;
+      background: linear-gradient(150deg, #c7dbe8, #a9c0d2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1f3d54;
+      font-size: 1rem;
+      font-weight: 450;
+      border-bottom: 1px solid #d4e2ed;
+    }
+
+    .project-content {
+      padding: 1.6rem;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #1a2e3f;
+    }
+
+    .project-desc {
+      color: #456477;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #2c7b9c;
+      margin-right: 1.5rem;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .project-links a:hover {
+      border-bottom-color: #2c7b9c;
+    }
+
+    /* contact */
+    .contact-block {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      margin: 2.5rem 0 1rem;
+      border: 1px solid #e0eef6;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-info i { /* fake icons via pseudo-elements or simple text */
+      display: inline-block;
+      width: 1.8rem;
+      color: #54809b;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .contact-placeholder {
+      background: #eef5fa;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      color: #1e4b66;
+      font-family: monospace;
+      font-size: 1rem;
+    }
+
+    .social-placeholders a {
+      display: inline-block;
+      background: #e9f0f6;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      text-decoration: none;
+      color: #1c5777;
+      font-weight: 500;
+      margin: 0 0.5rem 0.5rem 0;
+      border: 1px solid #bdd6e8;
+      transition: 0.1s;
+    }
+
+    .social-placeholders a:hover {
+      background: #d3e6f2;
+      border-color: #75a9c9;
+    }
+
+    /* footer / small */
+    .footnote {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      color: #809aab;
+      font-size: 0.9rem;
+      border-top: 1px solid #dae5ed;
+    }
+
+    /* mobile fine‑tuning */
+    @media (max-width: 640px) {
+      .intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .intro-text h1 {
+        font-size: 2.2rem;
+      }
+      .photo-placeholder {
+        width: 130px;
+        height: 130px;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .contact-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* additional utility */
+    .btn-placeholder {
+      cursor: default;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #d7e3ec;
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- intro + photo placeholder -->
+    <div class="intro">
+      <div class="photo-placeholder">
+        📷<br> your photo
+      </div>
+      <div class="intro-text">
+        <h1>YOUR NAME</h1>
+        <div class="tagline">Designer / Developer / Thinker</div>
+        <p style="margin-top: 0.8rem; color: #476c83;">A short, welcoming line about yourself goes here. Keep it friendly and professional.</p>
+      </div>
+    </div>
+
+    <!-- ABOUT section (could merge with intro, but separate as requested) -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div style="background: white; border-radius: 24px; padding: 2rem; border: 1px solid #ecf3f9;">
+        <p style="font-size: 1.15rem; max-width: 800px; color: #1f3d54;">I’m a creative problem solver with a passion for building clean, user‑friendly digital experiences. I have [X] years of experience in [your field]. This placeholder text describes your background, values, and what drives you. It should feel genuine and inviting.</p>
+        <p style="margin-top: 1.2rem; color: #366277;">⚡ Based in [City] · Open to freelance and collaborations</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <ul class="skills-list">
+        <li>HTML5 & CSS3</li>
+        <li>JavaScript / ES6</li>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>Python</li>
+        <li>UI Design</li>
+        <li>Figma</li>
+        <li>Responsive Dev</li>
+        <li>Git & GitHub</li>
+        <li>SQL</li>
+        <li>REST APIs</li>
+        <li>Agile</li>
+        <!-- add or replace as needed -->
+      </ul>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Senior Frontend Developer</span>
+          <span class="exp-date">2022 — present</span>
+        </div>
+        <div class="exp-company">Creative Agency · [City/Remote]</div>
+        <div class="exp-desc">Lead development of client dashboards and design systems. Collaborate with designers and product managers to deliver responsive, performant features. Mentor junior developers.</div>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">UI Developer</span>
+          <span class="exp-date">2019 — 2022</span>
+        </div>
+        <div class="exp-company">TechStart · [City]</div>
+        <div class="exp-desc">Built component libraries and interactive prototypes. Optimised web apps for accessibility and cross‑browser compatibility. Contributed to 5 major product releases.</div>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <span class="exp-title">Junior Web Developer</span>
+          <span class="exp-date">2017 — 2019</span>
+        </div>
+        <div class="exp-company">Digital Studio · [City]</div>
+        <div class="exp-desc">Developed and maintained WordPress themes and custom websites. Collaborated on email campaigns and performance audits.</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img-placeholder">Project screenshot</div>
+          <div class="project-content">
+            <div class="project-title">Portfolio 2025</div>
+            <div class="project-desc">Minimal, responsive portfolio template with flexible sections. Built with HTML/CSS and a touch of JS.</div>
+            <div class="project-links">
+              <a href="#" target="_blank">🔗 Live demo</a>
+              <a href="#" target="_blank">📁 GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img-placeholder">Project screenshot</div>
+          <div class="project-content">
+            <div class="project-title">TaskFlow App</div>
+            <div class="project-desc">A kanban‑style task manager with drag‑and‑drop. React frontend and mock API.</div>
+            <div class="project-links">
+              <a href="#" target="_blank">🔗 Live demo</a>
+              <a href="#" target="_blank">📁 GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img-placeholder">Project screenshot</div>
+          <div class="project-content">
+            <div class="project-title">Weather Dashboard</div>
+            <div class="project-desc">Real‑time weather and 5‑day forecast using OpenWeather API. Clean, responsive UI.</div>
+            <div class="project-links">
+              <a href="#" target="_blank">🔗 Live demo</a>
+              <a href="#" target="_blank">📁 GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- hint: replace links and images with your own -->
+    </section>
+
+    <!-- CONTACT + placeholder for links -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-block">
+        <div class="contact-info">
+          <p><i>📧</i> <span class="contact-placeholder">your.email@example.com</span></p>
+          <p><i>📱</i> <span class="contact-placeholder">+XX XXX XXX XXX</span></p>
+          <p><i>📍</i> <span class="contact-placeholder">City, Country</span></p>
+        </div>
+        <div class="social-placeholders">
+          <a href="#" target="_blank">GitHub</a>
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="#" target="_blank">Twitter</a>
+          <a href="#" target="_blank">Codepen</a>
+          <!-- your custom links here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- simple footer -->
+    <div class="footnote">
+      ✦  designed with a clean template – replace all placeholders with your own content ✦
+    </div>
+  </div>
+</body>
+</html>
+```
